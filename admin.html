@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtVista Admin Panel</title>
+    <link rel="stylesheet" href="css/admin_style.css">
+    <!-- Optional: Link to main style for theme consistency, but requires careful CSS scoping or duplication of theme variables -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+<body>
+    <header>
+        <h1>ArtVista Admin Panel</h1>
+        <nav>
+            <a href="index.html">Back to Main Gallery</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="artwork-management">
+            <h2>Manage Artworks</h2>
+            <div id="admin-artworks-list">
+                <!-- Artworks will be listed here by js/admin.js -->
+                <p>Loading artworks...</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="add-artwork-section">
+            <h3>Add New Artwork</h3>
+            <form id="add-artwork-form">
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div>
+                    <label for="artist">Artist:</label>
+                    <input type="text" id="artist" name="artist" required>
+                </div>
+                <div>
+                    <label for="style">Style:</label>
+                    <input type="text" id="style" name="style">
+                </div>
+                <div>
+                    <label for="epoch">Epoch:</label>
+                    <input type="text" id="epoch" name="epoch">
+                </div>
+                <div>
+                    <label for="imageUrl">Image URL:</label>
+                    <input type="url" id="imageUrl" name="imageUrl" placeholder="e.g., images/new_artwork.jpg">
+                </div>
+                 <div>
+                    <label for="highResImageUrl">High-Res Image URL (Optional):</label>
+                    <input type="url" id="highResImageUrl" name="highResImageUrl" placeholder="e.g., images/new_artwork_high.jpg">
+                </div>
+                <div>
+                    <label for="audioUrl">Audio URL (Optional):</label>
+                    <input type="url" id="audioUrl" name="audioUrl" placeholder="e.g., audio/new_commentary.mp3">
+                </div>
+                <div>
+                    <label for="details">Details/Description:</label>
+                    <textarea id="details" name="details"></textarea>
+                </div>
+                <div>
+                    <label for="techniques">Techniques:</label>
+                    <input type="text" id="techniques" name="techniques">
+                </div>
+                <div>
+                    <label for="dimensions">Dimensions:</label>
+                    <input type="text" id="dimensions" name="dimensions">
+                </div>
+                <div>
+                    <label for="historicalContext">Historical Context:</label>
+                    <textarea id="historicalContext" name="historicalContext"></textarea>
+                </div>
+                <div>
+                    <label for="artistBio">Artist Biography:</label>
+                    <textarea id="artistBio" name="artistBio"></textarea>
+                </div>
+                <button type="submit">Add Artwork</button>
+            </form>
+            <div id="admin-feedback" style="margin-top: 10px;"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 ArtVista Admin</p>
+    </footer>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

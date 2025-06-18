@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header style="text-align: right; padding: 10px; display: flex; justify-content: flex-end; align-items: center; gap: 10px;">
+        <button id="ambient-sound-toggle-btn">Play Ambient Sound</button>
+        <button id="theme-toggle-btn">Switch to Dark Mode</button>
+    </header>
+    <audio id="ambient-audio-player" src="audio/ambient_gallery_sound.mp3" loop></audio>
+    <footer>
+        <p>&copy; 2023 ArtVista Gallery | <a href="admin.html" style="color: var(--link-color);">Admin Panel</a></p>
+    </footer>
+    <h1>Welcome to My Project</h1>
+
+    <section id="art-catalog" class="view-section">
+        <h2>Art Catalog</h2>
+
+        <div class="filters">
+            <input type="text" id="search-bar" placeholder="Search by title...">
+            <select id="artist-filter">
+                <option value="">All Artists</option>
+                <!-- Artist options will be populated by JavaScript -->
+            </select>
+            <select id="style-filter">
+                <option value="">All Styles</option>
+                <!-- Style options will be populated by JavaScript -->
+            </select>
+        </div>
+
+        <div id="artwork-grid" class="artwork-grid">
+            <!-- Artwork items will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Quick Preview Modal -->
+    <div id="quick-preview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img src="" alt="Artwork Preview" id="modal-image">
+            <h3 id="modal-title"></h3>
+            <p id="modal-artist"></p>
+            <p id="modal-basic-details"></p> <!-- Renamed from modal-details for clarity -->
+            <div id="modal-extended-details">
+                <h4>Techniques:</h4>
+                <p id="modal-techniques"></p>
+                <h4>Dimensions:</h4>
+                <p id="modal-dimensions"></p>
+                <h4>Historical Context:</h4>
+                <p id="modal-historical-context"></p>
+                <h4>Artist Biography:</h4>
+                <p id="modal-artist-bio"></p>
+                <h4>Views:</h4>
+                <p id="modal-view-stats"></p>
+            </div>
+            <button id="modal-favorite-btn" class="favorite-btn">☆ Favorite</button>
+            <div class="add-to-collection-dropdown" style="margin-top: 10px;">
+                <select id="modal-collection-select" data-artwork-id="">
+                    <option value="">Add to collection...</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div id="modal-audio-container" style="margin-top: 15px; display: none;">
+                <h4>Audio Commentary:</h4>
+                <audio id="modal-audio-player" controls style="width: 100%;"></audio>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+
+    <button id="toggle-view-btn">Switch to 3D Gallery</button>
+
+    <div id="gallery-3d-container" class="view-section hidden">
+        <!-- 3D scene will be rendered here -->
+    </div>
+
+    <!-- Zoomed Image Modal -->
+    <div id="zoom-modal" class="modal">
+        <span class="close-zoom-button">&times;</span>
+        <img class="zoom-modal-content" id="zoomed-image">
+    </div>
+
+    <hr>
+
+    <section id="collections-manager">
+        <h2>My Collections</h2>
+        <div class="collection-controls">
+            <input type="text" id="new-collection-name" placeholder="New collection name...">
+            <button id="create-collection-btn">Create Collection</button>
+        </div>
+        <div id="collections-list">
+            <!-- Collections will be listed here by JavaScript -->
+        </div>
+        <div id="collection-artworks-display" style="display:none;">
+            <h3 id="current-collection-title"></h3>
+            <div class="artwork-grid" id="collection-artwork-grid">
+                <!-- Artworks of the selected collection will be displayed here -->
+            </div>
+            <button id="back-to-collections-list" style="display:none;">Back to Collections List</button>
+        </div>
+    </section>
+
+    <script src="js/gallery3d.js"></script>
+</body>
+</html>

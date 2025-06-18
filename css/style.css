@@ -1,0 +1,543 @@
+:root {
+    --background-color-light: #f0f2f5;
+    --text-color-light: #333333;
+    --primary-color-light: #007bff;
+    --secondary-color-light: #6c757d;
+    --card-background-light: #ffffff;
+    --modal-background-light: #fefefe;
+    --button-text-color-light: #ffffff;
+    --border-color-light: #dddddd;
+    --input-bg-light: #ffffff;
+    --input-border-light: #ced4da;
+    --link-color-light: #007bff;
+    --gradient-start-light: #e0eafc;
+    --gradient-mid-light: #cfdef3;
+    --gradient-end-light: #f0f2f5;
+    --shadow-color-light: rgba(0,0,0,0.1);
+
+    --background-color-dark: #121212;
+    --text-color-dark: #e0e0e0;
+    --primary-color-dark: #bb86fc; /* A common Material Design dark theme accent */
+    --secondary-color-dark: #03dac6; /* Another Material Design accent */
+    --card-background-dark: #1e1e1e;
+    --modal-background-dark: #2c2c2c;
+    --button-text-color-dark: #121212; /* For buttons with primary-dark background */
+    --border-color-dark: #444444;
+    --input-bg-dark: #2c2c2c;
+    --input-border-dark: #555555;
+    --link-color-dark: #bb86fc;
+    --gradient-start-dark: #1a1a2e;
+    --gradient-mid-dark: #16213e;
+    --gradient-end-dark: #0f3460;
+    --shadow-color-dark: rgba(255,255,255,0.05);
+}
+
+/* Default to light theme */
+body {
+    --background-color: var(--background-color-light);
+    --text-color: var(--text-color-light);
+    --primary-color: var(--primary-color-light);
+    --secondary-color: var(--secondary-color-light);
+    --card-background: var(--card-background-light);
+    --modal-background: var(--modal-background-light);
+    --button-text-color: var(--button-text-color-light);
+    --border-color: var(--border-color-light);
+    --input-bg: var(--input-bg-light);
+    --input-border: var(--input-border-light);
+    --link-color: var(--link-color-light);
+    --gradient-start: var(--gradient-start-light);
+    --gradient-mid: var(--gradient-mid-light);
+    --gradient-end: var(--gradient-end-light);
+    --shadow-color: var(--shadow-color-light);
+}
+
+body.dark-mode {
+    --background-color: var(--background-color-dark);
+    --text-color: var(--text-color-dark);
+    --primary-color: var(--primary-color-dark);
+    --secondary-color: var(--secondary-color-dark);
+    --card-background: var(--card-background-dark);
+    --modal-background: var(--modal-background-dark);
+    --button-text-color: var(--button-text-color-dark); /* Text on dark buttons */
+    --border-color: var(--border-color-dark);
+    --input-bg: var(--input-bg-dark);
+    --input-border: var(--input-border-dark);
+    --link-color: var(--link-color-dark);
+    --gradient-start: var(--gradient-start-dark);
+    --gradient-mid: var(--gradient-mid-dark);
+    --gradient-end: var(--gradient-end-dark);
+    --shadow-color: var(--shadow-color-dark);
+}
+
+
+/* Basic styling */
+@keyframes animatedGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end), var(--gradient-start));
+    background-size: 300% 300%;
+    animation: animatedGradient 25s ease infinite;
+    transition: background 0.5s ease, color 0.5s ease; /* For theme switch */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--text-color);
+}
+
+/* Catalog Styling */
+#art-catalog {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    /* background-color: transparent; or a subtle var if needed */
+}
+
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filters input[type="text"],
+.filters select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.artwork-item {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 15px;
+    background-color: var(--card-background);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artwork-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.artwork-item img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.artwork-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+.artwork-item p {
+    font-size: 0.9em;
+    color: var(--text-color); /* Adjusted, maybe a secondary text color variable later */
+}
+
+.artwork-item button {
+    background-color: var(--primary-color);
+    color: var(--button-text-color); /* Check this for dark mode */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Specific button hover, might need adjustment based on primary color */
+.artwork-item button:hover {
+    opacity: 0.8; /* Simpler hover for variable colors */
+}
+
+.favorite-btn {
+    background-color: var(--input-bg); /* Using input-bg for non-favorited state */
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.favorite-btn.favorited {
+    background-color: var(--primary-color); /* Use primary color for favorited state */
+    color: var(--button-text-color); /* Ensure contrast */
+    border-color: var(--primary-color);
+}
+
+/* .favorite-btn:hover already has opacity: 0.8; */
+
+
+/* Modal Styling */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.65); /* Slightly darker overlay for better contrast */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--modal-background);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.modal.visible .modal-content {
+    transform: scale(1);
+    color: var(--text-color); /* Ensure text in modal content gets theme color */
+}
+
+.modal-content img {
+    max-width: 90%;
+    max-height: 400px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 4px; /* Consistent rounding */
+}
+
+.close-button {
+    color: var(--text-color); /* Use text color for close button */
+    opacity: 0.7;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-color); /* Ensure hover is also themed */
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Theme Toggle Button */
+#theme-toggle-btn, #ambient-sound-toggle-btn {
+    padding: 8px 12px;
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+#theme-toggle-btn:hover, #ambient-sound-toggle-btn:hover {
+    opacity: 0.8;
+}
+
+/* View Switching Transitions */
+.view-section {
+    transition: opacity 0.4s ease-in-out, background-color 0.5s ease, color 0.5s ease;
+    /* visibility and display will be toggled directly by JS for simplicity with .hidden */
+}
+
+.view-section.hidden {
+    display: none !important;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* 3D Gallery Styling */
+#gallery-3d-container {
+    width: 100%;
+    height: 80vh;
+    margin-top: 20px;
+    background-color: var(--card-background); /* Use card background or similar */
+    /* display: none; /* Controlled by .hidden class now */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#toggle-view-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--secondary-color); /* Use secondary for this button */
+    color: var(--button-text-color); /* Check contrast */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-view-btn:hover {
+    opacity: 0.85;
+}
+
+/* Collections Section Styling */
+#collections-manager {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--card-background); /* A slightly different shade or same as card */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+#collections-manager h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.collection-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.collection-controls input[type="text"] {
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 4px;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.collection-controls button {
+    padding: 8px 15px;
+    background-color: var(--primary-color); /* Greenish, use primary or secondary */
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.collection-controls button:hover {
+    opacity: 0.85;
+}
+
+#collections-list .collection-list-item {
+    background-color: var(--input-bg); /* Or card-background for more elevation */
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#collections-list .collection-list-item span {
+    cursor: pointer;
+    flex-grow: 1;
+    color: var(--text-color);
+}
+#collections-list .collection-list-item span:hover {
+    color: var(--link-color);
+}
+
+#collections-list .collection-list-item button.delete-collection-btn {
+    background-color: var(--secondary-color); /* Reddish, use secondary or a specific error color */
+    color: var(--button-text-color); /* Ensure contrast */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+#collections-list .collection-list-item button.delete-collection-btn:hover {
+    opacity: 0.8;
+}
+
+
+#collection-artworks-display h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+#collection-artworks-display .artwork-grid { /* Re-use artwork-grid style */
+    margin-bottom: 20px;
+}
+
+#back-to-collections-list {
+    display: block;
+    margin: 10px auto;
+    padding: 8px 15px;
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#back-to-collections-list:hover {
+    opacity: 0.85;
+}
+
+/* Add to Collection Dropdown (inside artwork items/modal - conceptual for now) */
+.add-to-collection-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.add-to-collection-dropdown select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.add-to-collection-dropdown button { /* This button isn't actually used in current HTML, select auto-adds */
+    padding: 5px 8px;
+    margin-left: 5px;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.add-to-collection-dropdown button:hover {
+    opacity: 0.8;
+}
+
+/* Extended details in Modal */
+#modal-extended-details {
+    margin-top: 15px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+#modal-extended-details h4 {
+    margin-top: 10px;
+    margin-bottom: 3px;
+    color: var(--text-color); /* Use main text color for subtitles */
+    opacity: 0.9;
+    font-size: 1em;
+}
+
+#modal-extended-details p {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--text-color); /* Use main text color, maybe a secondary later */
+    opacity: 0.7;
+    padding-left: 10px;
+}
+
+/* Zoom Modal Styling */
+#zoom-modal .modal-content {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: none;
+}
+
+.zoom-modal-content img {
+   /* This style is now applied to .zoom-modal-content if it's the image itself */
+}
+
+/* The actual image inside #zoom-modal if .zoom-modal-content is a wrapper */
+/* If #zoomed-image is the .modal-content itself, these apply to it */
+#zoomed-image {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border-radius: 4px; /* Add slight rounding to zoomed image too */
+}
+
+#zoom-modal.visible #zoomed-image {
+    transform: scale(1);
+}
+
+
+.close-zoom-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1; /* Keep this light for visibility on dark overlay */
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 1001;
+    text-shadow: 0 0 8px rgba(0,0,0,0.7); /* Add shadow for better visibility */
+}
+
+/* Modal Audio Player Styling */
+#modal-audio-container h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-size: 1em;
+    text-align: left;
+}
+
+#modal-audio-player {
+    border-radius: 5px;
+    /* Some browsers might allow slight styling, others are more restrictive */
+    /* filter: var(--dark-mode-filter, none); */ /* Example if you wanted to invert colors for dark mode */
+}
+
+.close-zoom-button:hover,
+.close-zoom-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
